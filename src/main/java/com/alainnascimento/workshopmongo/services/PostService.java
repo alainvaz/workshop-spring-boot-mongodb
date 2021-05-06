@@ -24,7 +24,15 @@ public class PostService {
 	}
 	
 	public List<Post> findByTitle(String text){
-		return repo.findByTitleContainingIgnoreCase(text);
+		
+		String acao = "2"; // 2 igual consulta personalizada
+		
+		if (acao.equals("1")) {			
+			return repo.findByTitleContainingIgnoreCase(text);
+		}else {
+			return repo.seachTitle(text); 
+		}
 	}
+
 
 }
