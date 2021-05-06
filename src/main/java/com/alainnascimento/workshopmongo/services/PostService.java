@@ -1,5 +1,6 @@
 package com.alainnascimento.workshopmongo.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +35,11 @@ public class PostService {
 		}
 	}
 
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+		
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000); // coloca a data maxima até o proximo dia as 00, pois estamos trabalhando com instant
+		
+		return repo.fullSearch(text, minDate, maxDate);
+	}
 
 }
